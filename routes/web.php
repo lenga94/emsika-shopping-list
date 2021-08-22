@@ -22,6 +22,10 @@ Route::get('/', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->prefix('tasks')->group(function() {
 
+    Route::get('/dashboard', function() {
+       return redirect()->route('dashboard');
+    });
+
     /**
      * Tasks Routes
      */
