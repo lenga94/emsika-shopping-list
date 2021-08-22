@@ -4,14 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
 
-class Task extends Model
+class TaskItem extends Model
 {
     use HasFactory;
 
     //Table
-    protected $table = 'tasks';
+    protected $table = 'task_items';
 
     //Primary key
     protected $primaryKey = 'id';
@@ -23,16 +22,12 @@ class Task extends Model
     protected $fillable = [
         'name',
         'description',
-        'user_id',
+        'status',
+        'task_id',
     ];
 
-    public function taskItems()
+    public function task()
     {
-        return $this->hasMany('App\Models\TaskItem', 'task_id');
-    }
-
-    public function user()
-    {
-        return $this->belongsTo('App\Models\User', 'user_id');
+        return $this->belongsTo('App\Models\Task', 'task_id');
     }
 }
