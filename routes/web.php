@@ -20,11 +20,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function() {
+    return redirect()->route('dashboard');
+});
+
 Route::middleware(['auth:sanctum', 'verified'])->prefix('tasks')->group(function() {
 
-    Route::get('/dashboard', function() {
-       return redirect()->route('dashboard');
-    });
+
 
     /**
      * Tasks Routes
